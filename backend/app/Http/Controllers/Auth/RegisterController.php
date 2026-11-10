@@ -11,12 +11,12 @@ use Illuminate\Support\Facades\Hash;
 class RegisterController extends Controller
 {
 
-    public function showRegistationform()
+    public function showRegistrationForm()
     {
         return view('auth.register');
     }
 
-    public function register(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -26,7 +26,7 @@ class RegisterController extends Controller
             'alamat' => 'nullable|string|',
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -36,7 +36,8 @@ class RegisterController extends Controller
         ]);
 
         Auth::login($user);
+        request()->session()->regenerate();
 
-        return redirect()->route('peminjam.dashboard')->with('success', 'Registrasi berhasil ditambahkan.');
+        return redirect()->route('peminjam.katalog')->with('success', 'Registrasi berhasil ditambahkan.');
     }
 }

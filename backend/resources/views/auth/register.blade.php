@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Sistem Peminjaman Alat</title>
+    <title>Register - Sistem Peminjaman Alat</title>
     <!-- Memuat Tailwind CSS melalui CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -31,7 +31,7 @@
             </div>
         @endif
 
-        <form action="{{ route('auth.register') }}" method="POST">
+        <form action="{{ route('register.store') }}" method="POST">
             @csrf
 
             <!-- Input Nama -->
@@ -65,22 +65,28 @@
             <!-- Input no_hp -->
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-semibold mb-2">No_Hp (Opsional)</label>
-                <input type="text" name="no_hp" value="{{ old('no_hp') }}" required
+                <input type="text" name="no_hp" value="{{ old('no_hp') }}" 
                     class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
 
             <!-- Input alamat -->
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-semibold mb-2">Alamat</label>
-                <input type="text" name="alamat" value="{{ old('alamat') }}" required
+                <input type="text" name="alamat" value="{{ old('alamat') }}" 
                     class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
 
             <!-- Tombol Submit -->
             <button type="submit"
                 class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition duration-200">
-                Masuk
+                Daftar
             </button>
+
+             <p class="mt-4 text-center text-sm text-gray-600">
+            Sudah punya akun?
+            <a href="{{ route('login') }}" class="font-semibold text-blue-600 hover:text-blue-700">Masuk di sini</a>
+        </p> 
+
         </form>
     </div>
 

@@ -86,8 +86,8 @@ Route::middleware(['auth'])->prefix('peminjam')->name('peminjam.')->group(functi
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AuthController::class, 'login']);
-    Route::get('/register',[RegisterController::class, 'showRegistationform'])->name('auth.register');
-    Route::post('/register',[RegisterController::class, 'register']);
+    Route::get('/register',[RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::post('/register',[RegisterController::class, 'store'])->name('register.store');
 });
 
 // Route Logout (Harus sudah login)
